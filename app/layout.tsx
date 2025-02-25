@@ -9,11 +9,11 @@ import Footer from '@/components/footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'The Arcverse | Modern Architectural Design Studio',
+  title: 'Arcverse | Modern Architectural Design Studio',
   description: 'Arcverse is a leading architectural firm specializing in innovative, sustainable, and modern architectural designs for residential and commercial projects.',
   keywords: 'architecture, design studio, modern architecture, sustainable design, commercial architecture, residential architecture',
   openGraph: {
-    title: 'The Arcverse | Modern Architectural Design Studio',
+    title: 'Arcverse | Modern Architectural Design Studio',
     description: 'Leading architectural firm specializing in innovative and sustainable designs',
     images: ['/og-image.jpg'],
   },

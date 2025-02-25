@@ -3,16 +3,8 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Menu, X, Building2, Sun, Moon, ChevronDown } from 'lucide-react'
+import { Menu, X, Building2, Sun, Moon } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -42,13 +34,6 @@ const Navbar = () => {
     { href: '/careers/internship', label: 'Internship' },
   ]
 
-  const aboutLinks = [
-    { href: '/about/who-we-are', label: 'Who We Are' },
-    { href: '/about/why-choose-us', label: 'Why Choose Us' },
-    { href: '/about/our-work', label: 'We Turn Ideas Into Works of Art' },
-    { href: '/about/team', label: 'Our Team' },
-  ]
-
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       isScrolled 
@@ -71,31 +56,24 @@ const Navbar = () => {
               Home
             </Link>
 
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-primary/80 hover:text-primary">
-                    Portfolio
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-2 p-4">
-                      {portfolioLinks.map((link) => (
-                        <li key={link.href}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={link.href}
-                              className="block p-2 hover:bg-primary/10 rounded-md text-primary/80 hover:text-primary transition-colors"
-                            >
-                              {link.label}
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+            <div className="relative group">
+              <button className="text-primary/80 hover:text-primary transition-colors">
+                Portfolio
+              </button>
+              <div className="absolute left-0 mt-2 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="py-2">
+                  {portfolioLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-2 text-sm text-primary/80 hover:text-primary hover:bg-primary/10"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             <Link
               href="/services"
@@ -104,57 +82,45 @@ const Navbar = () => {
               Services
             </Link>
 
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-primary/80 hover:text-primary">
-                    About
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[250px] gap-2 p-4">
-                      {aboutLinks.map((link) => (
-                        <li key={link.href}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={link.href}
-                              className="block p-2 hover:bg-primary/10 rounded-md text-primary/80 hover:text-primary transition-colors"
-                            >
-                              {link.label}
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+            <Link
+              href="/about"
+              className="text-primary/80 hover:text-primary transition-colors"
+            >
+              About
+            </Link>
 
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-primary/80 hover:text-primary">
-                    Careers
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-2 p-4">
-                      {careersLinks.map((link) => (
-                        <li key={link.href}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={link.href}
-                              className="block p-2 hover:bg-primary/10 rounded-md text-primary/80 hover:text-primary transition-colors"
-                            >
-                              {link.label}
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+            <Link
+              href="/clients"
+              className="text-primary/80 hover:text-primary transition-colors"
+            >
+              Clients
+            </Link>
+
+            <div className="relative group">
+              <button className="text-primary/80 hover:text-primary transition-colors">
+                Careers
+              </button>
+              <div className="absolute left-0 mt-2 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <div className="py-2">
+                  {careersLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-2 text-sm text-primary/80 hover:text-primary hover:bg-primary/10"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <Link
+              href="/contact"
+              className="text-primary/80 hover:text-primary transition-colors"
+            >
+              Contact
+            </Link>
 
             {mounted && (
               <Button
@@ -171,9 +137,6 @@ const Navbar = () => {
                 )}
               </Button>
             )}
-            <Button asChild className="bg-primary hover:bg-primary/90">
-              <Link href="/contact">Get in Touch</Link>
-            </Button>
           </div>
 
           {/* Mobile Navigation Button */}
@@ -239,20 +202,21 @@ const Navbar = () => {
                 Services
               </Link>
 
-              {/* About Section */}
-              <div className="space-y-2">
-                <div className="px-3 py-2 text-base font-medium text-primary/80">About</div>
-                {aboutLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="block px-6 py-2 text-sm text-primary/70 hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
+              <Link
+                href="/about"
+                className="block px-3 py-2 text-base font-medium text-primary/80 hover:text-primary"
+                onClick={() => setIsOpen(false)}
+              >
+                About
+              </Link>
+
+              <Link
+                href="/clients"
+                className="block px-3 py-2 text-base font-medium text-primary/80 hover:text-primary"
+                onClick={() => setIsOpen(false)}
+              >
+                Clients
+              </Link>
 
               {/* Careers Section */}
               <div className="space-y-2">
@@ -269,11 +233,13 @@ const Navbar = () => {
                 ))}
               </div>
 
-              <div className="px-3 py-2">
-                <Button className="w-full bg-primary hover:bg-primary/90" asChild>
-                  <Link href="/contact">Get in Touch</Link>
-                </Button>
-              </div>
+              <Link
+                href="/contact"
+                className="block px-3 py-2 text-base font-medium text-primary/80 hover:text-primary"
+                onClick={() => setIsOpen(false)}
+              >
+                Contact
+              </Link>
             </div>
           </div>
         )}

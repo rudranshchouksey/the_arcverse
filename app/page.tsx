@@ -2,10 +2,45 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Award, Users, Building, Leaf } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import ContactPopup from "@/components/contact-popup"
 
 export default function Home() {
+  const specializations = [
+    {
+      title: "Architectural Design",
+      description: "Creating innovative and sustainable architectural solutions",
+      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80"
+    },
+    {
+      title: "Unity Development",
+      description: "Interactive 3D visualization and virtual reality experiences",
+      image: "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&q=80"
+    },
+    {
+      title: "Unreal Engine",
+      description: "Photorealistic rendering and real-time architectural visualization",
+      image: "https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2?auto=format&fit=crop&q=80"
+    }
+  ]
+
+  const testimonials = [
+    {
+      name: "John Smith",
+      role: "CEO, TechCorp",
+      content: "THE ARCVERSE transformed our office space into a modern marvel.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80"
+    },
+    {
+      name: "Sarah Williams",
+      role: "Director, Urban Living",
+      content: "Their understanding of sustainable design principles is unmatched.",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
+    }
+  ]
+
   return (
     <>
+      <ContactPopup />
       {/* Hero Section */}
       <section className="relative h-screen flex items-center">
         <div className="absolute inset-0 z-0">
@@ -34,6 +69,31 @@ export default function Home() {
             <Button size="lg" variant="outline" asChild>
               <Link href="/contact">Get in Touch</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* About Company */}
+      <section className="py-24 bg-muted/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">About THE ARCVERSE</h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                Founded in 2015, THE ARCVERSE has grown from a visionary startup to a leading architectural firm. We combine traditional architectural excellence with cutting-edge technology to create spaces that inspire and endure.
+              </p>
+              <Button variant="outline" asChild>
+                <Link href="/about">Learn More About Us</Link>
+              </Button>
+            </div>
+            <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
+                alt="Our office"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -83,6 +143,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Specializations */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-12 text-center">Our Specializations</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {specializations.map((spec, index) => (
+              <div key={index} className="group">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-lg mb-4">
+                  <Image
+                    src={spec.image}
+                    alt={spec.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{spec.title}</h3>
+                <p className="text-muted-foreground">{spec.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Featured Projects */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -125,6 +208,34 @@ export default function Home() {
                 <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
                 <p className="text-muted-foreground">{project.category}</p>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 bg-muted/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-12 text-center">What Our Clients Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-background p-6 rounded-lg shadow-lg">
+                <div className="flex items-center mb-4">
+                  <div className="relative w-12 h-12 mr-4">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover rounded-full"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">{testimonial.name}</h3>
+                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground">{testimonial.content}</p>
+              </div>
             ))}
           </div>
         </div>
