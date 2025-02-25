@@ -139,16 +139,19 @@ export default function ContactPage() {
                   <p className="text-destructive text-sm mt-1">Message must be at least 10 characters long</p>
                 )}
               </div>
-              <Button 
-                type="submit" 
-                size="lg" 
+              <Button
+                type="submit"
+                size="lg"
                 className="w-full"
-                disabled={isSubmitting || 
-                  !formData.name || 
-                  !formData.email || 
-                  !formData.message || 
-                  !validateEmail(formData.email) ||
-                  (formData.phone && !validatePhone(formData.phone))
+                disabled={
+                  Boolean(
+                    isSubmitting || 
+                    !formData.name.trim() || 
+                    !formData.email.trim() || 
+                    !formData.message.trim() || 
+                    !validateEmail(formData.email) || 
+                    (formData.phone && formData.phone.trim() !== "" && !validatePhone(formData.phone))
+                  )
                 }
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
