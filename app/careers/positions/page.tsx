@@ -58,7 +58,7 @@ export default function PositionsPage() {
     }
   ]
 
-  const departments = ["all", ...new Set(positions.map(p => p.department))]
+  const departments = ["all", ...Array.from(new Set(positions.map(p => p.department)))]
   const filteredPositions = selectedDepartment === "all" 
     ? positions 
     : positions.filter(p => p.department === selectedDepartment)
