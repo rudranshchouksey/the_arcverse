@@ -57,9 +57,12 @@ const Navbar = () => {
             </Link>
 
             <div className="relative group">
-              <button className="text-primary/80 hover:text-primary transition-colors">
+              <Link
+                href="/portfolio"
+                className="text-primary/80 hover:text-primary transition-colors"
+              >
                 Portfolio
-              </button>
+              </Link>
               <div className="absolute left-0 mt-2 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="py-2">
                   {portfolioLinks.map((link) => (
@@ -97,9 +100,12 @@ const Navbar = () => {
             </Link>
 
             <div className="relative group">
-              <button className="text-primary/80 hover:text-primary transition-colors">
+              <Link
+                href="/careers"
+                className="text-primary/80 hover:text-primary transition-colors"
+              >
                 Careers
-              </button>
+              </Link>
               <div className="absolute left-0 mt-2 w-48 bg-background rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <div className="py-2">
                   {careersLinks.map((link) => (
@@ -181,7 +187,13 @@ const Navbar = () => {
               
               {/* Portfolio Section */}
               <div className="space-y-2">
-                <div className="px-3 py-2 text-base font-medium text-primary/80">Portfolio</div>
+                <Link
+                  href="/portfolio"
+                  className="block px-3 py-2 text-base font-medium text-primary/80 hover:text-primary"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Portfolio
+                </Link>
                 {portfolioLinks.map((link) => (
                   <Link
                     key={link.href}
@@ -220,7 +232,13 @@ const Navbar = () => {
 
               {/* Careers Section */}
               <div className="space-y-2">
-                <div className="px-3 py-2 text-base font-medium text-primary/80">Careers</div>
+                <Link
+                  href="/careers"
+                  className="block px-3 py-2 text-base font-medium text-primary/80 hover:text-primary"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Careers
+                </Link>
                 {careersLinks.map((link) => (
                   <Link
                     key={link.href}

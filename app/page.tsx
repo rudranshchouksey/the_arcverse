@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Award, Users, Building, Leaf } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import ContactPopup from "@/components/contact-popup"
@@ -7,9 +7,29 @@ import ContactPopup from "@/components/contact-popup"
 export default function Home() {
   const specializations = [
     {
-      title: "Architectural Design",
+      title: "Architecture",
       description: "Creating innovative and sustainable architectural solutions",
       image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80"
+    },
+    {
+      title: "Interior Design",
+      description: "Crafting beautiful and functional interior spaces",
+      image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80"
+    },
+    {
+      title: "Structure",
+      description: "Engineering robust and efficient structural solutions",
+      image: "https://images.unsplash.com/photo-1590274853856-f22d5ee3d228?auto=format&fit=crop&q=80"
+    },
+    {
+      title: "Landscape",
+      description: "Creating harmonious outdoor environments",
+      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80"
+    },
+    {
+      title: "Vastu",
+      description: "Incorporating ancient architectural principles",
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80"
     },
     {
       title: "Unity Development",
@@ -23,24 +43,65 @@ export default function Home() {
     }
   ]
 
+  const featuredProjects = [
+    {
+      title: "Modern Residential Complex",
+      description: "Award-winning sustainable residential development",
+      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80",
+      category: "Residential"
+    },
+    {
+      title: "Corporate Headquarters",
+      description: "State-of-the-art office complex",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
+      category: "Commercial"
+    },
+    {
+      title: "Cultural Arts Center",
+      description: "Dynamic space for arts and cultural events",
+      image: "https://images.unsplash.com/photo-1470723710355-95304d8aece4?auto=format&fit=crop&q=80",
+      category: "Cultural"
+    }
+  ]
+
   const testimonials = [
     {
       name: "John Smith",
       role: "CEO, TechCorp",
-      content: "THE ARCVERSE transformed our office space into a modern marvel.",
+      content: "THE ARCVERSE transformed our office space into a modern marvel that perfectly balances functionality with aesthetic excellence.",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80"
     },
     {
       name: "Sarah Williams",
       role: "Director, Urban Living",
-      content: "Their understanding of sustainable design principles is unmatched.",
+      content: "Their understanding of sustainable design principles and innovative approach to architecture is truly unmatched in the industry.",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80"
+    }
+  ]
+
+  const whyChooseUs = [
+    {
+      title: "Expertise & Innovation",
+      description: "Over 15 years of architectural excellence with cutting-edge technology integration"
+    },
+    {
+      title: "Sustainable Focus",
+      description: "Commitment to environmentally responsible design and green building practices"
+    },
+    {
+      title: "Client-Centric",
+      description: "Personalized approach ensuring your vision comes to life exactly as imagined"
+    },
+    {
+      title: "Comprehensive Services",
+      description: "Full-service architectural solutions from concept to completion"
     }
   ]
 
   return (
     <>
       <ContactPopup />
+      
       {/* Hero Section */}
       <section className="relative h-screen flex items-center">
         <div className="absolute inset-0 z-0">
@@ -80,7 +141,10 @@ export default function Home() {
             <div>
               <h2 className="text-3xl font-bold mb-6">About THE ARCVERSE</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Founded in 2015, THE ARCVERSE has grown from a visionary startup to a leading architectural firm. We combine traditional architectural excellence with cutting-edge technology to create spaces that inspire and endure.
+                Founded with a vision to revolutionize architectural design, THE ARCVERSE has grown from a visionary startup to a leading architectural firm. We combine traditional architectural excellence with cutting-edge technology to create spaces that inspire and endure.
+              </p>
+              <p className="text-lg text-muted-foreground mb-6">
+                Our commitment to innovation, sustainability, and client satisfaction has made us a trusted partner for projects ranging from residential developments to commercial complexes.
               </p>
               <Button variant="outline" asChild>
                 <Link href="/about">Learn More About Us</Link>
@@ -98,56 +162,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Why Choose Arcverse</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              We combine innovative design with sustainable practices to create spaces that stand the test of time.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Award,
-                title: "Award Winning",
-                description: "Recognized globally for architectural excellence and innovation"
-              },
-              {
-                icon: Users,
-                title: "Expert Team",
-                description: "Skilled architects and designers with years of experience"
-              },
-              {
-                icon: Building,
-                title: "Custom Solutions",
-                description: "Tailored architectural designs for your specific needs"
-              },
-              {
-                icon: Leaf,
-                title: "Sustainable",
-                description: "Eco-friendly approaches to modern architecture"
-              }
-            ].map((feature, index) => (
-              <div key={index} className="text-center p-6">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 mb-4">
-                  <feature.icon className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Specializations */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center">Our Specializations</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-3xl font-bold mb-4 text-center">Our Specializations</h2>
+          <p className="text-xl text-muted-foreground mb-12 text-center max-w-2xl mx-auto">
+            Comprehensive architectural solutions powered by innovation and expertise
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {specializations.map((spec, index) => (
               <div key={index} className="group">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg mb-4">
@@ -157,9 +179,25 @@ export default function Home() {
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{spec.title}</h3>
                 <p className="text-muted-foreground">{spec.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-24 bg-primary text-primary-foreground">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-12 text-center">Why Choose Us</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {whyChooseUs.map((item, index) => (
+              <div key={index} className="text-center">
+                <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
+                <p className="text-primary-foreground/80">{item.description}</p>
               </div>
             ))}
           </div>
@@ -170,33 +208,21 @@ export default function Home() {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-12">
-            <h2 className="text-3xl font-bold">Featured Projects</h2>
-            <Button variant="ghost" asChild>
-              <Link href="/projects" className="flex items-center gap-2">
-                View All Projects <ArrowRight className="h-4 w-4" />
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Featured Projects</h2>
+              <p className="text-xl text-muted-foreground">
+                Discover our latest architectural achievements
+              </p>
+            </div>
+            <Button variant="outline" asChild>
+              <Link href="/portfolio/latest-projects">
+                View All Projects <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80",
-                title: "Modern Residential Complex",
-                category: "Residential"
-              },
-              {
-                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80",
-                title: "Corporate Headquarters",
-                category: "Commercial"
-              },
-              {
-                image: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?auto=format&fit=crop&q=80",
-                title: "Sustainable Living Hub",
-                category: "Mixed Use"
-              }
-            ].map((project, index) => (
-              <Link href={`/projects/${index}`} key={index} className="group">
+            {featuredProjects.map((project, index) => (
+              <div key={index} className="group">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg mb-4">
                   <Image
                     src={project.image}
@@ -204,10 +230,15 @@ export default function Home() {
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
                   />
+                  <div className="absolute top-4 right-4">
+                    <span className="bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-sm">
+                      {project.category}
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
-                <p className="text-muted-foreground">{project.category}</p>
-              </Link>
+                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <p className="text-muted-foreground">{project.description}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -219,9 +250,9 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-12 text-center">What Our Clients Say</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-background p-6 rounded-lg shadow-lg">
-                <div className="flex items-center mb-4">
-                  <div className="relative w-12 h-12 mr-4">
+              <div key={index} className="bg-background p-8 rounded-lg shadow-lg">
+                <div className="flex items-center mb-6">
+                  <div className="relative w-16 h-16 mr-4">
                     <Image
                       src={testimonial.image}
                       alt={testimonial.name}
@@ -230,11 +261,11 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <h3 className="font-semibold">{testimonial.name}</h3>
+                    <h3 className="font-semibold text-lg">{testimonial.name}</h3>
                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                   </div>
                 </div>
-                <p className="text-muted-foreground">{testimonial.content}</p>
+                <p className="text-lg text-muted-foreground italic">"{testimonial.content}"</p>
               </div>
             ))}
           </div>
@@ -242,15 +273,15 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-primary text-primary-foreground">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Transform Your Vision into Reality?
           </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-muted-foreground">
             Let's collaborate to create architectural masterpieces that exceed expectations.
           </p>
-          <Button size="lg" variant="secondary" asChild>
+          <Button size="lg" asChild>
             <Link href="/contact">Start Your Project</Link>
           </Button>
         </div>

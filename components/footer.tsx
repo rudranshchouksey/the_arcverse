@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Building2 className="h-6 w-6" />
-              <span className="font-bold text-xl">Arcverse</span>
+              <span className="font-bold text-xl">The Arcverse</span>
             </div>
             <p className="text-muted-foreground">
               Creating innovative architectural solutions that transform spaces and enrich lives.
@@ -61,7 +61,7 @@ const Footer = () => {
 
         <div className="mt-8 pt-8 border-t">
           <p className="text-center text-muted-foreground">
-            © {new Date().getFullYear()} Arcverse. All rights reserved.
+            © {new Date().getFullYear()} The Arcverse. All rights reserved.
           </p>
         </div>
       </div>
